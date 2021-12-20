@@ -1,5 +1,6 @@
 import time
 from selenium import webdriver
+from selenium.common.exceptions import *
 
 webbrowser = webdriver.Chrome()
 webbrowser.get("WEBSITE")
@@ -14,9 +15,8 @@ webbrowser.get("ACCESS ANOTHER PAGE INSIDE THE WEBSITE")
 try:
     text = webbrowser.find_element_by_name("some element").text
     print(text)
-    except:
-    #still trying to figure out the correct way of handling specific selenium exceptions
-    print ("Unable to locate element")
+except NoSuchElementException:
+    print ("Element not found")
 
 
 
